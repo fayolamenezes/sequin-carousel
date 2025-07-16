@@ -97,41 +97,41 @@
     }
 
     .text-stacked {
-    position: absolute;
-    display: none;
-    flex-direction: column;
-    gap: 0.75rem;
-    font-size: 0.95rem;
-    max-width: 300px;
-    z-index: 10;
+      position: absolute;
+      display: none;
+      flex-direction: column;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+      max-width: 300px;
+      z-index: 10;
     }
 
     .text-stacked.left-edge {
-    top: 50px;
-    left: 250px; /* moved slightly more to right for larger size */
-    text-align: left;
+      top: 50px;
+      left: 250px;
+      text-align: left;
     }
 
     .text-stacked.right-edge {
-    top: 50px;
-    right: 250px; /* moved slightly more to left for larger size */
-    text-align: right;
+      top: 50px;
+      right: 250px;
+      text-align: right;
     }
 
-    .text-stacked div:first-child {
-    font-size: 1rem;
-    color: black;
+    .text-stacked .stacked-left {
+      font-size: 0.85rem;
+      color: black;
     }
 
-    .text-stacked div:last-child {
-    background: white;
-    padding: 2rem 3rem;         /* Increased padding */
-    border-radius: 12px;        /* Larger rounded corners */
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2); /* Stronger shadow */
-    font-size: 1.25rem;         /* Larger text */
-    color: black;
-    min-width: 260px;
-    min-height: 160px;
+    .text-stacked .stacked-right {
+      background: white;
+      padding: 2rem 3rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+      font-size: 1rem;
+      color: black;
+      min-width: 260px;
+      min-height: 160px;
     }
 
     .image-wrapper.active .text-left,
@@ -139,7 +139,6 @@
     .image-wrapper.active .text-stacked {
       opacity: 1;
     }
-
   </style>
 </head>
 <body>
@@ -242,18 +241,18 @@
   const carousel = document.querySelector(".carousel");
   const totalWidth = carousel.scrollWidth - window.innerWidth - 200;
 
-    gsap.to(carousel, {
+  gsap.to(carousel, {
     x: () => -totalWidth,
     ease: "power1.out",
     scrollTrigger: {
-        trigger: ".carousel-section",
-        start: "top top",
-        end: () => "+=" + totalWidth,
-        pin: true,
-        scrub: 1.5,
-        anticipatePin: 1,
+      trigger: ".carousel-section",
+      start: "top top",
+      end: () => "+=" + totalWidth,
+      pin: true,
+      scrub: 1.5,
+      anticipatePin: 1,
     },
-    });
+  });
 
   const wrappers = document.querySelectorAll('.image-wrapper');
 
@@ -282,8 +281,8 @@
 
         if (showStacked) {
           stackedText.innerHTML = `
-            <div>${leftText.innerText}</div>
-            <div>${rightText.innerText}</div>
+            <div class="stacked-left">${leftText.innerText}</div>
+            <div class="stacked-right">${rightText.innerText}</div>
           `;
           stackedText.style.display = "flex";
           leftText.style.display = "none";
