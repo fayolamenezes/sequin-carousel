@@ -29,6 +29,8 @@
       display: flex;
       gap: 2rem;
       width: fit-content;
+      padding-right: 0 !important;
+      margin-right: 0 !important;
     }
 
     .image-wrapper {
@@ -69,9 +71,9 @@
     }
 
     .text-left {
-      top: 50%;
+      top: 50px;
+      transform: none;
       left: -160px;
-      transform: translateY(-50%);
       font-size: 0.85rem;
       color: black;
       white-space: normal;
@@ -80,41 +82,56 @@
     }
 
     .text-right {
-      top: 50%;
+      top: 50px;
+      transform: none;
       left: 200px;
-      transform: translateY(-50%);
       background: white;
-      padding: 2rem 3rem;
+      padding: 3rem 4rem;
       border-radius: 8px;
       font-size: 1rem;
       color: black;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
       white-space: nowrap;
+      min-width: 250px;
+      min-height: 180px;
     }
 
     .text-stacked {
-      top: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-      text-align: center;
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+    max-width: 300px;
+    z-index: 10;
+    }
+
+    .text-stacked.left-edge {
+    top: 50px;
+    left: 250px; /* moved slightly more to right for larger size */
+    text-align: left;
+    }
+
+    .text-stacked.right-edge {
+    top: 50px;
+    right: 250px; /* moved slightly more to left for larger size */
+    text-align: right;
     }
 
     .text-stacked div:first-child {
-      font-size: 0.9rem;
-      color: black;
+    font-size: 1rem;
+    color: black;
     }
 
     .text-stacked div:last-child {
-      background: white;
-      padding: 1rem 1.5rem;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      font-size: 1rem;
-      color: black;
+    background: white;
+    padding: 2rem 3rem;         /* Increased padding */
+    border-radius: 12px;        /* Larger rounded corners */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2); /* Stronger shadow */
+    font-size: 1.25rem;         /* Larger text */
+    color: black;
+    min-width: 260px;
+    min-height: 160px;
     }
 
     .image-wrapper.active .text-left,
@@ -122,6 +139,7 @@
     .image-wrapper.active .text-stacked {
       opacity: 1;
     }
+
   </style>
 </head>
 <body>
@@ -133,120 +151,84 @@
       <img src="person1.webp" alt="Person 1">
       <div class="text-left">Lorem ipsum dolor sit amet.</div>
       <div class="text-right">1</div>
-      <div class="text-stacked">
-        <div>Lorem ipsum dolor sit amet.</div>
-        <div>Brave</div>
-      </div>
+      <div class="text-stacked"></div>
     </div>
 
     <div class="image-wrapper">
       <img src="person2.webp" alt="Person 2">
       <div class="text-left">Velit esse cillum dolore eu fugiat.</div>
       <div class="text-right">2</div>
-      <div class="text-stacked">
-        <div>Velit esse cillum dolore eu fugiat.</div>
-        <div>Chill</div>
-      </div>
+      <div class="text-stacked"></div>
     </div>
 
     <div class="image-wrapper">
       <img src="person3.webp" alt="Person 3">
       <div class="text-left">Excepteur sint occaecat cupidatat non.</div>
       <div class="text-right">3</div>
-      <div class="text-stacked">
-        <div>Excepteur sint occaecat cupidatat non.</div>
-        <div>Sharp</div>
-      </div>
+      <div class="text-stacked"></div>
     </div>
 
     <div class="image-wrapper">
       <img src="person4.webp" alt="Person 4">
       <div class="text-left">Sed ut perspiciatis unde omnis iste.</div>
       <div class="text-right">4</div>
-      <div class="text-stacked">
-        <div>Sed ut perspiciatis unde omnis iste.</div>
-        <div>Soft</div>
-      </div>
+      <div class="text-stacked"></div>
     </div>
 
     <div class="image-wrapper">
       <img src="person5.webp" alt="Person 5">
       <div class="text-left">At vero eos et accusamus et iusto.</div>
       <div class="text-right">5</div>
-      <div class="text-stacked">
-        <div>At vero eos et accusamus et iusto.</div>
-        <div>Loud</div>
-      </div>
+      <div class="text-stacked"></div>
     </div>
 
     <div class="image-wrapper">
       <img src="person6.webp" alt="Person 6">
       <div class="text-left">Ut enim ad minima veniam.</div>
       <div class="text-right">6</div>
-      <div class="text-stacked">
-        <div>Ut enim ad minima veniam.</div>
-        <div>Zen</div>
-      </div>
+      <div class="text-stacked"></div>
     </div>
 
     <div class="image-wrapper">
       <img src="person1.webp" alt="Person 7">
       <div class="text-left">Quis autem vel eum iure reprehenderit.</div>
       <div class="text-right">7</div>
-      <div class="text-stacked">
-        <div>Quis autem vel eum iure reprehenderit.</div>
-        <div>Cool</div>
-      </div>
+      <div class="text-stacked"></div>
     </div>
 
     <div class="image-wrapper">
       <img src="person2.webp" alt="Person 8">
       <div class="text-left">Nam libero tempore cum soluta nobis.</div>
       <div class="text-right">8</div>
-      <div class="text-stacked">
-        <div>Nam libero tempore cum soluta nobis.</div>
-        <div>Calm</div>
-      </div>
+      <div class="text-stacked"></div>
     </div>
 
     <div class="image-wrapper">
       <img src="person3.webp" alt="Person 9">
       <div class="text-left">Temporibus autem quibusdam et aut.</div>
       <div class="text-right">9</div>
-      <div class="text-stacked">
-        <div>Temporibus autem quibusdam et aut.</div>
-        <div>Witty</div>
-      </div>
+      <div class="text-stacked"></div>
     </div>
 
     <div class="image-wrapper">
       <img src="person4.webp" alt="Person 10">
       <div class="text-left">Neque porro quisquam est qui dolorem.</div>
       <div class="text-right">10</div>
-      <div class="text-stacked">
-        <div>Neque porro quisquam est qui dolorem.</div>
-        <div>Wise</div>
-      </div>
+      <div class="text-stacked"></div>
     </div>
 
     <div class="image-wrapper">
       <img src="person5.webp" alt="Person 11">
       <div class="text-left">Ut aut reiciendis voluptatibus maiores.</div>
       <div class="text-right">11</div>
-      <div class="text-stacked">
-        <div>Ut aut reiciendis voluptatibus maiores.</div>
-        <div>Neat</div>
-      </div>
+      <div class="text-stacked"></div>
     </div>
 
     <div class="image-wrapper">
       <img src="person6.webp" alt="Person 12">
       <div class="text-left">Lorem ipsum dolor sit amet again.</div>
       <div class="text-right">12</div>
-      <div class="text-stacked">
-        <div>Lorem ipsum dolor sit amet again.</div>
-        <div>Vast</div>
-      </div>
+      <div class="text-stacked"></div>
     </div>
 
   </div>
@@ -258,20 +240,20 @@
   gsap.registerPlugin(ScrollTrigger);
 
   const carousel = document.querySelector(".carousel");
-  const totalWidth = carousel.scrollWidth;
+  const totalWidth = carousel.scrollWidth - window.innerWidth;
 
-  gsap.to(carousel, {
-    x: () => -(totalWidth - window.innerWidth),
+    gsap.to(carousel, {
+    x: () => -totalWidth,
     ease: "power1.out",
     scrollTrigger: {
-      trigger: ".carousel-section",
-      start: "top top",
-      end: () => "+=" + totalWidth,
-      pin: true,
-      scrub: 1.5,
-      anticipatePin: 1,
+        trigger: ".carousel-section",
+        start: "top top",
+        end: () => "+=" + totalWidth,
+        pin: true,
+        scrub: 1.5,
+        anticipatePin: 1,
     },
-  });
+    });
 
   const wrappers = document.querySelectorAll('.image-wrapper');
 
@@ -298,9 +280,27 @@
 
         const showStacked = leftOverflow || rightOverflow;
 
-        stackedText.style.display = showStacked ? "flex" : "none";
-        leftText.style.display = showStacked ? "none" : "block";
-        rightText.style.display = showStacked ? "none" : "block";
+        if (showStacked) {
+          stackedText.innerHTML = `
+            <div>${leftText.innerText}</div>
+            <div>${rightText.innerText}</div>
+          `;
+          stackedText.style.display = "flex";
+          leftText.style.display = "none";
+          rightText.style.display = "none";
+
+          stackedText.classList.remove("left-edge", "right-edge");
+
+          if (leftOverflow) {
+            stackedText.classList.add("left-edge");
+          } else if (rightOverflow) {
+            stackedText.classList.add("right-edge");
+          }
+        } else {
+          stackedText.style.display = "none";
+          leftText.style.display = "block";
+          rightText.style.display = "block";
+        }
       });
     });
 
